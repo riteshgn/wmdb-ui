@@ -1,0 +1,1 @@
+export { default as WdbMediaTile } from './media-tile';
