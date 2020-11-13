@@ -1,1 +1,1 @@
-export { default as WdbHome } from './home';
+export { default as Home } from './home';

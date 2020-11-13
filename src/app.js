@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { WdbNavbar } from './components/navigation/organisms';
-import { WdbHome } from './views/home';
+import { Navbar } from './components/navigation/navbar';
+import { Home } from './views/home';
 
 const TV = () => (
     <div className="container">
@@ -20,11 +20,11 @@ class App extends Component {
     render() {
         return (
             <div id="app">
-                <WdbNavbar />
+                <Navbar />
 
                 <section className="section">
                     <Switch>
-                        <Route exact path="/" component={WdbHome} />
+                        <Route exact path="/" component={Home} />
                         <Route path="/tv" component={TV} />
                         <Route path="/movies" component={Movies} />
                     </Switch>
