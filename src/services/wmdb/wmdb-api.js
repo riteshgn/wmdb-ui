@@ -2,34 +2,23 @@ const MOCK_INIT_CATEGORIES = {
     'cat-trending': {
         name: 'Trending',
         filters: [
-            { id: 'today', name: 'Today' },
+            { id: 'day', name: 'Today' },
             { id: 'week', name: 'This Week' },
         ]
     },
     'cat-popular': {
         name: 'Most Popular',
         filters: [
-            { id: 'tv', name: 'TV' },
             { id: 'movie', name: 'Movie' },
+            { id: 'tv', name: 'TV' },
         ]
     },
-    'cat-latest': {
-        name: 'Newly Added',
-        filters: [
-            { id: 'tv', name: 'TV' },
-            { id: 'movie', name: 'Movie' },
-        ]
-    },
-    'cat-rated': {
+    'cat-toprated': {
         name: 'Top Rated',
         filters: [
-            { id: 'tv', name: 'TV' },
             { id: 'movie', name: 'Movie' },
+            { id: 'tv', name: 'TV' },
         ]
-    },
-    'cat-prev-view': {
-        name: 'Previously Viewed',
-        filters: []
     }
 };
 
@@ -38,7 +27,7 @@ function fetchInitialCategories() {
 }
 
 function fetchShowcaseOfTheDay() {
-    return new Promise(resolve => resolve({id: 'mando'}));
+    return new Promise(resolve => resolve({ id: 82856, type: 'tv' }));
 }
 
 function WmdbApi() {

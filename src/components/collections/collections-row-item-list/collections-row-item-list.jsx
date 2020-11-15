@@ -17,7 +17,7 @@ export default function CollectionsRowItemList({ categoryId, filterId }) {
     // TODO: display some default content if content list is empty!
 
     return (
-        <div className="columns">
+        <div className="columns is-multiline">
             {contentList.map(data => (
                 <div key={data.id} className="column is-3">
                     <CollectionsRowItem {...data} />
