@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { useBackgroundPosterStyle } from './showcase.hooks';
 
 import styles from './showcase.module.scss';
 
-export default function Showcase({ showcase }) {
+export default function Showcase() {
 
-    const backgroundPosterStyle = useBackgroundPosterStyle(showcase.id);
+    const backgroundPosterStyle = useBackgroundPosterStyle();
 
     return (
         <section
-            className={`hero is-light is-bold is-medium has-backdrop-image ${styles.hasBackgroundPosterStyle}`}
+            className={`hero is-light is-bold is-medium ${styles.isPoster}`}
             style={backgroundPosterStyle}>
 
             <div className="hero-body">
@@ -22,10 +21,4 @@ export default function Showcase({ showcase }) {
         </section>
     );
 
-}
-
-Showcase.propTypes = {
-    showcase: PropTypes.exact({
-        id: PropTypes.string.isRequired
-    })
 };

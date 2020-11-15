@@ -6,7 +6,15 @@ import { BIMAGE_DIMS, BIMAGE_RATIOS } from './image.constants';
 
 const VALID_DIMENTIONS = [...Object.keys(BIMAGE_DIMS), ...Object.keys(BIMAGE_RATIOS)];
 
+const propTypes = {
+    source: PropTypes.string.isRequired,
+    altText: PropTypes.string.isRequired,
+    dimension: PropTypes.oneOf(VALID_DIMENTIONS),
+    isRounded: PropTypes.bool
+};
+
 export default function Image({ source, altText, dimension, isRounded }) {
+
     return (
         <figure
             className={classNames([
@@ -21,11 +29,7 @@ export default function Image({ source, altText, dimension, isRounded }) {
             />
         </figure>
     );
+
 };
 
-Image.propTypes = {
-    source: PropTypes.string.isRequired,
-    altText: PropTypes.string.isRequired,
-    dimension: PropTypes.oneOf(VALID_DIMENTIONS),
-    isRounded: PropTypes.bool
-};
+Image.propTypes = propTypes;

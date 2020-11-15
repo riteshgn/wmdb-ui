@@ -26,18 +26,18 @@ const MOCK_POSTER_URLS = {
     'mando': 'https://image.tmdb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/9ijMGlJKqcslswWUzTEwScm82Gs.jpg'
 }
 
-function getPosterUrl(contentId) {
+function fetchPosterUrl(contentId) {
     return new Promise(resolve => resolve(MOCK_POSTER_URLS[contentId] || ''));
 }
 
-function searchByCategory(category) {
+function fetchContentByCategory(category) {
     return new Promise(resolve => resolve(MOCK_CAT_CONTENT[category] || []));
 }
 
 function TmdbApi() {
     return {
-        searchByCategory,
-        getPosterUrl,
+        fetchContentByCategory,
+        fetchPosterUrl,
     };
 }
 

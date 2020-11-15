@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { BImage } from '@components/bulma/atoms';
+import { BImage } from '@components/bulma/image';
 
-export default function MediaTile({ name, image_url }) {
+const propTypes = {
+    name: PropTypes.string.isRequired,
+    image_url: PropTypes.string.isRequired
+};
+
+export default function CollectionsRowItem({ name, image_url }) {
 
     return (
         <div className="card">
@@ -24,7 +29,4 @@ export default function MediaTile({ name, image_url }) {
 
 };
 
-MediaTile.propTypes = {
-    name: PropTypes.string.isRequired,
-    image_url: PropTypes.string.isRequired
-};
+CollectionsRowItem.propTypes = propTypes;

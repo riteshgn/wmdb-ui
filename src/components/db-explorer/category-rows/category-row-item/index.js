@@ -1,1 +1,0 @@
-export { default as CategoryRowItem } from './category-row-item';

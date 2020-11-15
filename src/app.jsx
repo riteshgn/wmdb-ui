@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { Navbar } from './components/navigation/navbar';
+import { Navbar } from './components/navbar';
 import { Home } from './views/home';
 
 const TV = () => (
