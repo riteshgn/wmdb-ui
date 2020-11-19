@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { MovieFinder } from './movie-finder';
+
 import { useBackgroundPosterStyle } from './showcase.hooks';
 
 import styles from './showcase.module.scss';
@@ -15,7 +17,7 @@ export default function Showcase() {
 
             <div className="hero-body">
                 <h1 className="title has-text-light">The Wow Movie Database</h1>
-                <input className="input" type="text" placeholder="Search for Movies or TV shows..." />
+                <MovieFinder placeholder="Search for Movies or TV shows..." />
             </div>
 
         </section>

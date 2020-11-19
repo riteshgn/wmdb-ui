@@ -1,35 +1,14 @@
 import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { Navbar } from './components/navbar';
-import { Home } from './views/home';
-
-const TV = () => (
-    <div className="container">
-        <h2>TV</h2>
-    </div>
-);
-
-const Movies = () => (
-    <div className="container">
-        <h2>Movies</h2>
-    </div>
-);
+import { HomePage } from './views/home-page';
 
 class App extends Component {
     render() {
         return (
-            <div id="app">
-                <Navbar />
-
-                <section className="section">
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/tv" component={TV} />
-                        <Route path="/movies" component={Movies} />
-                    </Switch>
-                </section>
-            </div>
+            <Switch>
+                <Route exact path="/" component={HomePage} />
+            </Switch>
         );
     }
 }

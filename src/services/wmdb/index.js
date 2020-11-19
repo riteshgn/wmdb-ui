@@ -1,1 +1,0 @@
-export { default as WmdbApi } from './wmdb-api';

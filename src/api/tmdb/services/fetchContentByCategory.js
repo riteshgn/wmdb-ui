@@ -1,22 +1,20 @@
-import Common from '../tmdb.common';
+import Api from '../tmdb.api';
 import Utils from '../tmdb.utils';
 
 export default async function fetchContentByCategory(category, filter) {
-    console.log('filter: ', filter)
-
     let response = {};
 
     switch (category) {
         case 'cat-trending':
-            response = await Common.fetchTrending(filter);
+            response = await Api.fetchTrending(filter);
             break;
 
         case 'cat-popular':
-            response = await Common.fetchPopular(filter);
+            response = await Api.fetchPopular(filter);
             break;
 
         case 'cat-toprated':
-            response = await Common.fetchTopRated(filter);
+            response = await Api.fetchTopRated(filter);
             break;
 
         default:

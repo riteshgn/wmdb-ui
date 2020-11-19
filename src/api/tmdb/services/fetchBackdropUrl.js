@@ -1,8 +1,8 @@
-import Common from '../tmdb.common';
+import Api from '../tmdb.api';
 import Utils from '../tmdb.utils';
 
 export default async function fetchBackdropUrl(content, strict = false) {
-    const response = await Common.fetchDetailsByTypeAndId(content);
+    const response = await Api.fetchDetailsByTypeAndId(content);
 
     function __logError(reason) {
         console.error(`${reason} for ${content.type} #${content.id}`);

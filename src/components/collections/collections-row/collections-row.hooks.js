@@ -1,4 +1,4 @@
-import { useState, useReducer } from 'react';
+import { useState } from 'react';
 
 function _toInitialFilterState(filters, activeFilterId) {
     // changes the filters from an array to a dictionary format
@@ -40,22 +40,14 @@ function _cloneAndSetNewActive(oldState, toBeActivated) {
     return newState;
 }
 
-function _filterReducer(state, action) {
-    switch (action.type) {
-        case 'activate_filter':
-            return _cloneAndSetNewActive(state, action.filterId);
-
-        default:
-            throw new Error(`Invalid action type: ${action.type}`);
-    }
-}
-
 export function useCategoryFilters(filters) {
     const [activeFilterId, setActiveFilterId] = useState(filters.length ? filters[0].id : "__nofilter__");
-    const [state, dispatch] = useReducer(_filterReducer, _toInitialFilterState(filters, activeFilterId));
+    const [state, setState] = useState(_toInitialFilterState(filters, activeFilterId));
 
     function __activateFilter(filter) {
-        dispatch({ type: 'activate_filter', filterId: filter.id });
+        setState(oldState => {
+            return _cloneAndSetNewActive(oldState, filter.id)
+        });
         setActiveFilterId(filter.id);
     }
 

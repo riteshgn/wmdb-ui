@@ -3,9 +3,11 @@ const path = require('path');
 module.exports = {
     webpack: {
         alias: {
-            '@src': path.resolve(__dirname, './src'),
+            '@api': path.resolve(__dirname, './src/api'),
             '@components': path.resolve(__dirname, './src/components'),
-            '@services': path.resolve(__dirname, './src/services'),
+            '@lib': path.resolve(__dirname, './src/lib'),
+            '@src': path.resolve(__dirname, './src'),
+            '@views': path.resolve(__dirname, './src/views'),
         }
     }
 };
