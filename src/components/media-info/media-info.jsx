@@ -18,15 +18,17 @@ export default function MediaInfo({ content }) {
     const mediaInfo = useMediaInfo(content);
 
     return (
-        <div className="card">
-            {Boolean(mediaInfo.imageUrl) && <div className="card-image">
-                <BImage
-                    source={mediaInfo.imageUrl}
-                    altText={`for ${mediaInfo.name}`}
-                    dimension='3by4' />
-            </div>}
-
-            <div className="card-content">
+        <div className="columns">
+            <div className="column is-half">
+                {Boolean(mediaInfo.imageUrl) &&
+                    <div className="card-image">
+                        <BImage
+                            source={mediaInfo.imageUrl}
+                            altText={`for ${mediaInfo.name}`}
+                            dimension='3by4' />
+                    </div>}
+            </div>
+            <div className="column is-half">
                 <MediaInfoCardContent mediaInfo={mediaInfo} />
             </div>
         </div>

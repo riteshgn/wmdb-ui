@@ -27,7 +27,7 @@ function fetchInitialCategories() {
 }
 
 function fetchShowcaseOfTheDay() {
-    return new Promise(resolve => resolve({ id: 82856, type: 'tv' }));
+    return new Promise(resolve => resolve({ id: 330459, type: 'movie' }));
 }
 
 function WmdbApi() {
