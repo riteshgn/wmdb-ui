@@ -1,7 +1,29 @@
 @charset "utf-8";
 
+// Brand colors
+$background: #16161a;
+$headline: #fffffe;
+$paragraph: #94a1b2;
+$card-background: #16161a;
+$card-paragraph: #94a1b2;
+$stroke: #010101;
+
+// Download required font
+@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
+
+// Update Bulma's global variables
+$family-sans-serif: "Goldman", sans-serif;
+$body-line-height: 1.25;
+$body-background-color: $background;
+$body-color: $paragraph;
+
 // Update some of Bulma's component variables
-$card-radius: 0;
+$title-color: $headline;
+$subtitle-color: $paragraph;
+$card-background-color: $background;
+$card-color: $card-paragraph;
+$card-header-color: $headline;
+$input-border-color: $stroke;
 
 // Import Bulma's variables
 @import "../../node_modules/bulma/sass/utilities/_all.sass";

@@ -2,27 +2,21 @@ import { useState, useEffect } from 'react';
 
 import { WmdbApi, TmdbApi } from '@api';
 
-async function _fetchPosterUrl(setBackgroundPosterStyle) {
+async function _fetchPosterUrl(setImageUrl) {
     const sotd = await WmdbApi.fetchShowcaseOfTheDay();
-    const url = await TmdbApi.fetchBackdropUrl(sotd);
+    const imageUrl = await TmdbApi.fetchBackdropUrl(sotd);
 
-    if (url) {
-        setBackgroundPosterStyle({
-            backgroundImage:
-                `linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(255, 255, 255, 0.1) 100%), url('${url}')`
-        });
+    if (imageUrl) {
+        setImageUrl(imageUrl);
     }
 }
 
-export function useBackgroundPosterStyle() {
-    const [backgroundPosterStyle, setBackgroundPosterStyle] = useState({
-        backgroundImage:
-            `linear-gradient(to right, rgba(0, 0, 0, 1.0) 0%, rgba(255, 255, 255, 0.1) 100%), url('')`
-    });
+export function useImageUrl() {
+    const [imageUrl, setImageUrl] = useState(null);
 
     useEffect(() => {
-        _fetchPosterUrl(setBackgroundPosterStyle);
+        _fetchPosterUrl(setImageUrl);
     }, []);
 
-    return backgroundPosterStyle;
+    return imageUrl;
 };

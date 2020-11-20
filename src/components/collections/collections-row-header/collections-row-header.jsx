@@ -19,7 +19,7 @@ export default function CollectionsRowHeader({ name, filters, handleFilterClick 
             {/* Left */}
             <div className="level-left">
                 <div className="level-item">
-                    <p className="title is-5">
+                    <p className="title is-3">
                         {name}
                     </p>
                 </div>

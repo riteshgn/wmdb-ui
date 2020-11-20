@@ -15,6 +15,7 @@ const Common = {
     /**
      * https://developers.themoviedb.org/3/trending/get-trending
      *
+     * @param {string} type       - @see Constants.CONTENT_TYPE_*
      * @param {string} timeWindow - day, week
      * @param {number} page       - @default 1
      */
@@ -62,10 +63,9 @@ async function fetchDetailsByTypeAndId({ type, id }) {
     return await ServiceUtils.get(url);
 }
 
-async function fetchTrending(timeWindow, page = 1) {
+async function fetchTrending(type, timeWindow, page = 1) {
     const url =
-        `${Constants.BASE_URL_API_V3}/trending/` +
-        `${Constants.CONTENT_TYPE_ALL}/${timeWindow}` +
+        `${Constants.BASE_URL_API_V3}/trending/${type}/${timeWindow}` +
         `?api_key=${Constants.API_KEY}&language=en-US&page=${page}`;
     return await ServiceUtils.get(url);
 }

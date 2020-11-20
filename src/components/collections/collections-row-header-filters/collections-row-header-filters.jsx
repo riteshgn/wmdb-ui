@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Styles from './collection-row-header-filters.module.scss';
+
 const propTypes = {
     filters: PropTypes.objectOf(PropTypes.shape({
         name: PropTypes.string.isRequired,
@@ -12,7 +14,9 @@ const propTypes = {
 export default function CollectionsRowHeaderFilters({ filters, handleFilterClick }) {
 
     function getClassNames(filterId) {
-        return `subtitle is-6 ${filters[filterId].isActive ? 'has-text-weight-bold' : 'is-italic'}`;
+        const activeClasses = 'has-text-weight-bold is-3';
+        const inactiveClasses = `is-italic is-6 ${Styles.asLink}`;
+        return `subtitle mr-3 ${Styles.filter} ${filters[filterId].isActive ? activeClasses : inactiveClasses}`;
     }
 
     return Object.keys(filters).map(filterId => (
@@ -21,7 +25,7 @@ export default function CollectionsRowHeaderFilters({ filters, handleFilterClick
             className={getClassNames(filterId)}
             onClick={() => handleFilterClick(filters[filterId])}
         >
-            {filters[filterId].name} &nbsp;
+            {filters[filterId].name}
         </p>
     ));
 

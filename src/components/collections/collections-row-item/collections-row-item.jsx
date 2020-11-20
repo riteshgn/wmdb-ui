@@ -1,29 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { BImage } from '@components/bulma/image';
 
 const propTypes = {
+    id: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    image_url: PropTypes.string.isRequired
+    imageUrl: PropTypes.string.isRequired
 };
 
-export default function CollectionsRowItem({ name, image_url }) {
+export default function CollectionsRowItem({ id, type, name, imageUrl }) {
+
+    const [renderRedirect, setRenderRedirect] = useState(false);
+
+    if (renderRedirect) {
+        return <Redirect to={`/${type}/${id}`} />
+    }
 
     return (
-        <div className="card">
+        <div
+            className="card"
+            style={{ cursor: 'pointer' }}
+            onClick={() => setRenderRedirect(true)}
+        >
             <div className="card-image">
                 <BImage
-                    source={image_url}
+                    source={imageUrl}
                     altText={`for ${name}`}
                     dimension='16by9' />
             </div>
 
-            <footer className="card-footer">
-                <div className="card-footer-item">
-                    <p className="subtitle"> {name} </p>
+            <div className="card-content p-3">
+                <div className="content">
+                    <p> {name} </p>
                 </div>
-            </footer>
+            </div>
         </div>
     );
 

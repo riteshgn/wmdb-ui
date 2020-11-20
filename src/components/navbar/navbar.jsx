@@ -25,16 +25,14 @@ class Navbar extends Component {
                     </button>
                 </div>
 
-                {/* <div
+                <div
                     id="app-navbar"
                     className="navbar-menu"
                 >
                     <div className="navbar-start">
                         <Link className="navbar-item is-active" to="/">Home</Link>
-                        <Link className="navbar-item" to="/tv">TV</Link>
-                        <Link className="navbar-item" to="/movies">Movies</Link>
                     </div>
-                </div> */}
+                </div>
             </nav>
         );
     }

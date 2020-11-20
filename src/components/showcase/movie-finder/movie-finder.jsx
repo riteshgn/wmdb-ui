@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import debounce from 'lodash/debounce';
 
@@ -13,6 +14,12 @@ const DEBOUNCE_WAIT_TIME_IN_MS = 225;
 const DEBOUNCE_MAX_WAIT_TIME_IN_MS = 500;
 
 /**
+ * The search bar triggers multiple search requests to the backend and not all
+ * of them are necessary. The entry when user pauses typing is the most crucial.
+ *
+ * So the debounce API is used here to rate limit the number of times a request
+ * is sent to the search engine.
+ *
  * @see https://lodash.com/docs/4.17.15#debounce
  */
 function _debouncedSearch(setResults) {
@@ -23,7 +30,7 @@ function _debouncedSearch(setResults) {
     );
 }
 
-export default function MovieFinder({ placeholder }) {
+export default function MovieFinder() {
     const [results, setResults] = useState([]);
 
     return (
@@ -32,30 +39,23 @@ export default function MovieFinder({ placeholder }) {
                 <input
                     className="input"
                     type="text"
-                    placeholder={placeholder}
+                    placeholder="Search for a Movie or TV Show..."
                     onChange={_debouncedSearch(setResults)}
                 />
             </div>
-            {results.length && <div className={`dropdown-menu ${Styles.w100}`} role="menu">
+            {Boolean(results.length) && <div className={`dropdown-menu ${Styles.w100}`} role="menu">
                 <div className="dropdown-content">
                     {
                         results.map((result, index) => (
                             <div key={index} className="dropdown-item">
-                                <p>#{result.id} <code>&lt;{result.name}&gt;</code></p>
+                                <Link to={`/${result.type}/${result.id}`}>
+                                    <p>
+                                        <strong>{result.name}</strong>
+                                    </p>
+                                </Link>
                             </div>
                         ))
                     }
-                    {/* <div className="dropdown-item">
-                        <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
-                    </div>
-                    <hr className="dropdown-divider" />
-                    <div className="dropdown-item">
-                        <p>You simply need to use a <code>&lt;div&gt;</code> instead.</p>
-                    </div>
-                    <hr className="dropdown-divider" />
-                    <button className="button dropdown-item">
-                        This is a link
-                    </button> */}
                 </div>
             </div>}
         </div>

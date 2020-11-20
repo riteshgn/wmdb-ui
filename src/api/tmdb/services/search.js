@@ -8,5 +8,5 @@ export default async function search(contentType, queryValue) {
         return [];
     }
 
-    return Utils.getContentList(response.results);
+    return Utils.getContentList(contentType, response.results);
 }

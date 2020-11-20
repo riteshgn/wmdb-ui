@@ -21,7 +21,7 @@ export default function CollectionsRow({ category }) {
     const { filters, activeFilterId, activateFilter } = useCategoryFilters(category.filters);
 
     return (
-        <div className="columns is-multiline px-3">
+        <div className="columns is-multiline px-3 mt-1">
             <div className="column is-full">
                 <CollectionsRowHeader
                     name={category.name}

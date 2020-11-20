@@ -3,10 +3,12 @@ import Utils from '../tmdb.utils';
 
 export default async function fetchContentByCategory(category, filter) {
     let response = {};
+    let contentType = filter;
 
     switch (category) {
         case 'cat-trending':
-            response = await Api.fetchTrending(filter);
+            contentType = 'movie'; // TODO: very naive implementation; improvements?
+            response = await Api.fetchTrending(contentType, filter);
             break;
 
         case 'cat-popular':
@@ -25,5 +27,5 @@ export default async function fetchContentByCategory(category, filter) {
         return [];
     }
 
-    return Utils.getContentList(response.results, 4);
+    return Utils.getContentList(contentType, response.results, 4);
 }
