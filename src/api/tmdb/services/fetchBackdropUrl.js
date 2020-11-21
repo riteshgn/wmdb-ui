@@ -14,11 +14,11 @@ export default async function fetchBackdropUrl(content, strict = false) {
     }
 
     if (response.backdrop_path) {
-        return Utils.getFullImageUrl(response.backdrop_path);
+        return Utils.getFullImageUrl(response.backdrop_path, /*duotone*/true);
     }
 
     if (!strict && response.poster_path) {
-        return Utils.getFullImageUrl(response.poster_path);
+        return Utils.getFullImageUrl(response.poster_path, /*duotone*/true);
     }
 
     __logError('No backdrop image found');

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import TmdbApi from '@api/tmdb';
+import { TmdbApi } from '@api/tmdb';
 
 async function _fetchMediaInfo(content, setMediaInfo) {
     setMediaInfo(await TmdbApi.fetchMediaInfo(content));

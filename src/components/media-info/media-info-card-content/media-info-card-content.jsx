@@ -17,7 +17,7 @@ export default function MediaInfoCardContent({ mediaInfo }) {
             {Boolean(mediaInfo.releaseDate) && <p>Release Date: {mediaInfo.releaseDate}</p>}
             {Boolean(mediaInfo.runtime) && <p>Runtime: {mediaInfo.runtime} mins </p>}
             <hr style={{ backgroundColor: '#7f5af0' }}/>
-            <p><strong>Synopsis</strong></p>
+            <p className="subtitle">Synopsis</p>
             <p>{Boolean(mediaInfo.synopsis) && mediaInfo.synopsis.overview}</p>
         </div>
     );

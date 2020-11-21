@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
-import { WmdbApi, TmdbApi } from '@api';
+import { WmdbApi } from '@api/wmdb';
+import { TmdbApi } from '@api/tmdb';
 
 async function _fetchPosterUrl(setImageUrl) {
     const sotd = await WmdbApi.fetchShowcaseOfTheDay();

@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { MovieFinder } from './movie-finder';
 
 import { useImageUrl } from './showcase.hooks';
-
 import Styles from './showcase.module.scss';
 
 export default function Showcase() {

@@ -8,7 +8,10 @@ const propTypes = {
     id: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired
+    imageUrl: PropTypes.shape({
+        backdrop: PropTypes.string,
+        poster: PropTypes.string
+    })
 };
 
 export default function CollectionsRowItem({ id, type, name, imageUrl }) {
@@ -27,7 +30,7 @@ export default function CollectionsRowItem({ id, type, name, imageUrl }) {
         >
             <div className="card-image">
                 <BImage
-                    source={imageUrl}
+                    source={imageUrl.backdrop || imageUrl.poster}
                     altText={`for ${name}`}
                     dimension='16by9' />
             </div>

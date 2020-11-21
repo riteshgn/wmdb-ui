@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { WmdbApi } from '@api';
+import { WmdbApi } from '@api/wmdb';
 
 export function useInitialCategories() {
     const [categories, setCategories] = useState({});

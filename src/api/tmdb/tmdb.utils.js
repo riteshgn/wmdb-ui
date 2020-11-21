@@ -10,8 +10,13 @@ export default Utils;
 
 /////////////////////////////////////////////////////////
 
-function getFullImageUrl(imagePath) {
-    return `${Constants.BASE_URL_IMAGES}/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)${imagePath}`;
+function getFullImageUrl(imagePath, duotone = false) {
+    if (!imagePath) {
+        return null;
+    }
+
+    const contextPath = duotone ? 'w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)' : 'w500';
+    return `${Constants.BASE_URL_IMAGES}/${contextPath}${imagePath}`;
 }
 
 function getContentList(contentType, results, maxSize) {
@@ -21,14 +26,9 @@ function getContentList(contentType, results, maxSize) {
 
     maxSize = maxSize || results.length;
 
-    return results.slice(0, maxSize).map(result => ({
-        id: result.id,
-        type: contentType,
-        name: result.title || result.original_title || result.name || result.original_name,
-        imageUrl: (result.backdrop_path || result.poster_path)
-            ? `https://image.tmdb.org/t/p/w500${result.backdrop_path || result.poster_path}`
-            : null,
-    }));
+    results.sort((result1, result2) => result1.popularity > result2.popularity ? 1 : -1);
+
+    return results.slice(0, maxSize).map(result => getMediaInfo(contentType, result));
 }
 
 function getMediaInfo(contentType, result) {
@@ -36,10 +36,11 @@ function getMediaInfo(contentType, result) {
         id: result.id,
         type: contentType,
         name: result.title || result.original_title || result.name || result.original_name,
-        imageUrl: (result.poster_path || result.backdrop_path)
-            ? `https://image.tmdb.org/t/p/w500${result.poster_path || result.backdrop_path}`
-            : null,
-        genres: result.genres.map(genre => genre.name),
+        imageUrl: {
+            backdrop: getFullImageUrl(result.backdrop_path),
+            poster: getFullImageUrl(result.poster_path)
+        },
+        genres: result.genres ? result.genres.map(genre => genre.name) : [],
         releaseDate: result.release_date,
         runtime: result.runtime,
         synopsis: {

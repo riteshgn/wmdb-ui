@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import debounce from 'lodash/debounce';
 
-import { SearchEngine } from '@lib/search-engine';
+import SearchEngine from './movie-finder.search-engine';
 import Styles from './movie-finder.module.scss';
 
 // Will delay function invocation until this time has elapsed
