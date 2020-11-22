@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { CollectionsRowItem } from '../collections-row-item';
+import { CollectionsRowItem } from '../row-item';
 
-import { useContentByCategory } from './collections-row-item-list.hooks';
+import { useContentByCategory } from './row-item-list.hooks';
 
 const propTypes = {
     categoryId: PropTypes.string.isRequired,

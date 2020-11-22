@@ -1,1 +1,0 @@
-export { default as CollectionsRow } from './collections-row';

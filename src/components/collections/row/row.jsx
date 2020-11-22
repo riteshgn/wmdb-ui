@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { CollectionsRowHeader } from '../collections-row-header';
-import { CollectionsRowItemList } from '../collections-row-item-list';
+import { CollectionsRowHeader } from '../row-header';
+import { CollectionsRowItemList } from '../row-item-list';
 
-import { useCategoryFilters } from './collections-row.hooks';
+import { useCategoryFilters } from './row.hooks';
 
 const propTypes = {
     category: PropTypes.exact({

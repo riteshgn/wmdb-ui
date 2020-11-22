@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CollectionsRow } from './collections-row';
+import { CollectionsRow } from './row';
 
 import { useInitialCategories } from './collections.hooks';
 

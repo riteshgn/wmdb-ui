@@ -1,1 +1,0 @@
-export { default as CollectionsRowHeader } from './collections-row-header';

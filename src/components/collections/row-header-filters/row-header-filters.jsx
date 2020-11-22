@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Styles from './collection-row-header-filters.module.scss';
+import Styles from './row-header-filters.module.scss';
 
 const propTypes = {
     filters: PropTypes.objectOf(PropTypes.shape({

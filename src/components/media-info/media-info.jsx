@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { BImage } from '@components/bulma';
-import { MediaInfoCardContent } from './media-info-card-content';
+import { MediaInfoCardContent } from './card-content';
 
 import { useMediaInfo } from './media-info.hooks';
 import { Link } from 'react-router-dom';

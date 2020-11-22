@@ -1,1 +1,0 @@
-export { default as CollectionsRowHeaderFilters } from './collections-row-header-filters';

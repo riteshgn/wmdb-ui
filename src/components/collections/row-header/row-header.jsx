@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { CollectionsRowHeaderFilters } from '../collections-row-header-filters';
+import { CollectionsRowHeaderFilters } from '../row-header-filters';
 
 const propTypes = {
     name: PropTypes.string.isRequired,
