@@ -7,6 +7,7 @@ $paragraph: #94a1b2;
 $card-background: #16161a;
 $card-paragraph: #94a1b2;
 $stroke: #010101;
+$headerfooter-background: #242629;
 
 // Download required font
 @import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
@@ -24,6 +25,9 @@ $card-background-color: $background;
 $card-color: $card-paragraph;
 $card-header-color: $headline;
 $input-border-color: $stroke;
+$navbar-background-color: $headerfooter-background;
+$footer-background-color: $headerfooter-background;
+$footer-color: $paragraph;
 
 // Import Bulma's variables
 @import "../../node_modules/bulma/sass/utilities/_all.sass";
