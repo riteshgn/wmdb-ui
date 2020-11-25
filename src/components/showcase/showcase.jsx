@@ -2,13 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { MovieFinder } from './movie-finder';
+import PropTypes from 'prop-types';
 
 import { useImageUrl } from './showcase.hooks';
 import Styles from './showcase.module.scss';
 
-export default function Showcase() {
+const propTypes = {
+    imageUrl: PropTypes.string
+};
 
-    const imageUrl = useImageUrl();
+export function PureShowcase({ imageUrl }) {
 
     return (
         <section
@@ -24,7 +27,7 @@ export default function Showcase() {
                 <img
                     className={Styles.background}
                     src={imageUrl}
-                    alt="background of the day"
+                    alt="movie poster of the day"
                 />}
 
             <div className="hero-body">
@@ -34,5 +37,15 @@ export default function Showcase() {
 
         </section>
     );
+
+};
+
+PureShowcase.propTypes = propTypes;
+
+
+export default function Showcase() {
+
+    const imageUrl = useImageUrl();
+    return <PureShowcase imageUrl={imageUrl} />
 
 };

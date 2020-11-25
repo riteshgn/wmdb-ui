@@ -4,7 +4,7 @@ import BImage from './image';
 
 const story = {
     component: BImage,
-    title: 'BImage'
+    title: 'Components/Bulma/BImage'
 };
 export default story;
 
@@ -13,7 +13,7 @@ const Template = args => <BImage {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     source: 'https://image.tmdb.org/t/p/w300/or06FN3Dka5tukK1e9sl16pB3iy.jpg',
-    altText: 'for Endgame',
+    altText: 'Endgame',
     dimension: '128'
 };
 

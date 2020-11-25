@@ -1,4 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+    mediaInfo: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        synopsis: PropTypes.shape({
+            tagline: PropTypes.string,
+            overview: PropTypes.string.isRequired
+        }),
+        rating: PropTypes.shape({
+            score: PropTypes.number,
+            count: PropTypes.number
+        }).isRequired,
+        genres: PropTypes.arrayOf(PropTypes.string),
+        releaseDate: PropTypes.string.isRequired,
+        runtime: PropTypes.number
+    })
+};
 
 /**
  * TODO: Super basic layout. For future enhancement!!
@@ -23,3 +41,5 @@ export default function MediaInfoCardContent({ mediaInfo }) {
     );
 
 };
+
+MediaInfoCardContent.propTypes = propTypes;
