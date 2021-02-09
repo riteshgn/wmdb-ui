@@ -1,4 +1,4 @@
-import { Requests } from '@lib/requests';
+import { Requests } from '../../lib/requests';
 import * as Constants from './tmdb.constants';
 
 const Api = {

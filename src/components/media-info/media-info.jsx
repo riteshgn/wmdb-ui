@@ -1,79 +1,91 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
-import { BImage } from '@components/bulma';
-import { MediaInfoCardContent } from './card-content';
-
+import {
+    Container,
+    InfoArticle ,
+    InfoColumn,
+    MediaImage,
+    SectionWithSeparator,
+    Title,
+    SubTitle,
+    Content,
+    JustifiedContent
+} from './media-info.styles';
 import { useMediaInfo } from './media-info.hooks';
 
-const propTypes = {
-    mediaInfo: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        imageUrl: PropTypes.shape({
-            backdrop: PropTypes.string,
-            poster: PropTypes.string
-        }),
-        synopsis: PropTypes.shape({
-            tagline: PropTypes.string,
-            overview: PropTypes.string.isRequired
-        }),
-        rating: PropTypes.shape({
-            score: PropTypes.number,
-            count: PropTypes.number
-        }).isRequired,
-        genres: PropTypes.arrayOf(PropTypes.string),
-        releaseDate: PropTypes.string.isRequired,
-        runtime: PropTypes.number
-    })
-};
+const NoInfo = () => (
+    <InfoArticle>
+        <InfoColumn>
+            <Content>No information found</Content>
+        </InfoColumn>
+    </InfoArticle>
+);
 
-export function PureMediaInfo({ mediaInfo }) {
+const AllInfo = ({ mediaInfo }) => (
+    <InfoArticle>
+        {/* Media Image */}
+        <MediaImage
+            src={mediaInfo.imageUrl.poster || mediaInfo.imageUrl.backdrop}
+            alt={mediaInfo.name}
+        />
+        {/* Details of selected media */}
+        <InfoColumn>
+            <SectionWithSeparator>
+                <Title>{mediaInfo.name}</Title>
+                {Boolean(mediaInfo.synopsis)
+                    && <SubTitle>
+                        {mediaInfo.synopsis.tagline}
+                    </SubTitle>}
+                {Boolean(mediaInfo.rating)
+                    && <Content>
+                        User rating: { mediaInfo.rating.score}
+                        {` (${mediaInfo.rating.count})`}
+                    </Content>}
+            </SectionWithSeparator>
 
-    const Content = (mediaInfo && mediaInfo.name)
-        ? (
-            <div className="columns">
-                {Boolean(mediaInfo.imageUrl) &&
-                <div className="column is-half">
-                    <div className="card-image">
-                        <BImage
-                            source={mediaInfo.imageUrl.poster || mediaInfo.imageUrl.backdrop}
-                            altText={`for ${mediaInfo.name}`}
-                            dimension='3by4' />
-                    </div>
-                </div>}
-                <div className="column is-half">
-                    <MediaInfoCardContent mediaInfo={mediaInfo} />
-                </div>
-            </div>
-        )
-        : <p> No information found </p>;
+            <SectionWithSeparator>
+                {Boolean(mediaInfo.genres)
+                    && <Content>
+                        {mediaInfo.genres.join(', ')}
+                    </Content>}
+                {Boolean(mediaInfo.releaseDate)
+                    && <Content>
+                        Release Date: {mediaInfo.releaseDate}
+                    </Content>}
+                {Boolean(mediaInfo.runtime)
+                    && <Content>
+                        Runtime: {mediaInfo.runtime} mins
+                    </Content>}
+            </SectionWithSeparator>
+            <section>
+                <SubTitle>Synopsis</SubTitle>
+                {Boolean(mediaInfo.synopsis)
+                    && <JustifiedContent>
+                        {mediaInfo.synopsis.overview}
+                    </JustifiedContent>}
+            </section>
+        </InfoColumn>
+    </InfoArticle>
+);
+
+const MediaInfo = ({ mediaType, id }) => {
+    const mediaInfo = useMediaInfo(mediaType, id);
+    const Info = (mediaInfo && mediaInfo.name)
+        ? AllInfo
+        : NoInfo
 
     return (
-        <div className="mediaInfo">
-            <article>
-                {Content}
-            </article>
-            <footer className="mt-2">
-                <Link to="/">Back to Home</Link>
-            </footer>
-        </div>
+        <Container>
+            <Info mediaInfo={mediaInfo} />
+            <Link to="/">Back to Home</Link>
+        </Container>
     );
-
-};
-
-export default function MediaInfo({ content }) {
-
-    const mediaInfo = useMediaInfo(content);
-    return <PureMediaInfo mediaInfo={mediaInfo}/>;
-
 };
 
 MediaInfo.propTypes = {
-    content: PropTypes.shape({
-        type: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired
-    })
+    mediaType: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired
 };
 
-MediaInfo.propTypes = propTypes;
+export default MediaInfo;

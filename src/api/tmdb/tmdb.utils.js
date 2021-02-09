@@ -28,7 +28,15 @@ function getContentList(contentType, results, maxSize) {
 
     results.sort((result1, result2) => result1.popularity > result2.popularity ? 1 : -1);
 
-    return results.slice(0, maxSize).map(result => getMediaInfo(contentType, result));
+    return results
+        .map(result => getMediaInfo(contentType, result))
+        .filter(media => (
+                    media.name
+                    && (media.imageUrl.backdrop || media.imageUrl.poster)
+                    && (media.rating.count && media.rating.count > 500)
+                )
+            )
+        .slice(0, maxSize);
 }
 
 function getMediaInfo(contentType, result) {

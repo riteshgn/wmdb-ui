@@ -1,1 +1,0 @@
-export { default as MovieFinder } from './movie-finder';

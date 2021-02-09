@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { HomePage } from './views/home-page';
-import { MediaInfoPage } from './views/media-info-page';
+import IndexPage from './pages/index';
+import MediaPage from './pages/media';
+import NotFoundPage from './pages/404';
 
 class App extends Component {
     render() {
         return (
             <Switch>
-                <Route exact path="/movie/:mediaId" component={MediaInfoPage} />
-                <Route exact path="/tv/:mediaId" component={MediaInfoPage} />
-                <Route exact path="/" component={HomePage} />
+                <Route exact path="/media/movie/:mediaId" component={MediaPage} />
+                <Route exact path="/tv/:mediaId" component={MediaPage} />
+                <Route exact path="/" component={IndexPage} />
+                <Route component={NotFoundPage} />
             </Switch>
         );
     }

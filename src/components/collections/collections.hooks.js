@@ -1,17 +1,29 @@
-import { useState, useEffect } from 'react';
-
-import { WmdbApi } from '@api/wmdb';
+import { useState } from 'react';
 
 export function useInitialCategories() {
-    const [categories, setCategories] = useState({});
-
-    useEffect(() => {
-        async function fetchInitialCategories() {
-            setCategories(await WmdbApi.fetchInitialCategories());
+    const [categories] = useState({
+        'cat-trending': {
+            name: 'Trending',
+            filters: [
+                { id: 'day', name: 'Today' },
+                { id: 'week', name: 'This Week' },
+            ]
+        },
+        'cat-popular': {
+            name: 'Most Popular',
+            filters: [
+                { id: 'movie', name: 'Movie' },
+                { id: 'tv', name: 'TV' },
+            ]
+        },
+        'cat-toprated': {
+            name: 'Top Rated',
+            filters: [
+                { id: 'movie', name: 'Movie' },
+                { id: 'tv', name: 'TV' },
+            ]
         }
-
-        fetchInitialCategories();
-    }, []); // empty array ensures that this query is not retriggered on component update!
+    });
 
     return categories;
 };

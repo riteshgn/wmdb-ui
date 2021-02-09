@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { TmdbApi } from '@api/tmdb';
+import { TmdbApi } from '../../../api/tmdb';
 
 // we need to pull information for a category and a filter only once
 // no need to query the API again for its data

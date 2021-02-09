@@ -1,51 +1,27 @@
 import React from 'react';
-import classNames from 'classnames';
+import { MediaFinder } from './media-finder';
+import {
+    Hero,
+    BackgroundImage,
+    Body,
+    Heading
+} from './showcase.styles';
 
-import { MovieFinder } from './movie-finder';
-import PropTypes from 'prop-types';
-
-import { useImageUrl } from './showcase.hooks';
-import Styles from './showcase.module.scss';
-
-const propTypes = {
-    imageUrl: PropTypes.string
-};
-
-export function PureShowcase({ imageUrl }) {
+const Showcase = () => {
 
     return (
-        <section
-            className={classNames([
-                'hero',
-                'is-medium',
-                Styles.hasBackground,
-                Styles.isGradient,
-            ])}
-        >
-
-            {Boolean(imageUrl) &&
-                <img
-                    className={Styles.background}
-                    src={imageUrl}
-                    alt="movie poster of the day"
-                />}
-
-            <div className="hero-body">
-                <h1 className="title">The Wow Movie Database</h1>
-                <MovieFinder />
-            </div>
-
-        </section>
+        <Hero>
+            <BackgroundImage
+                src="https://image.tmdb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,c5c6c7)/uOJHKQgazwVw9YJl7jW1TB1SL47.jpg"
+                alt="star wars: rouge one"
+            />
+            <Body>
+                <Heading>The Wow Movie Database</Heading>
+                <MediaFinder />
+            </Body>
+        </Hero>
     );
 
 };
 
-PureShowcase.propTypes = propTypes;
-
-
-export default function Showcase() {
-
-    const imageUrl = useImageUrl();
-    return <PureShowcase imageUrl={imageUrl} />
-
-};
+export default Showcase;

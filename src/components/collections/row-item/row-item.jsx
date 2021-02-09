@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
-
-import { BImage } from '@components/bulma/image';
+import { Link } from 'react-router-dom';
+import { MediaCard, CardImage, CardContent } from './row-item.styles';
 
 const propTypes = {
     id: PropTypes.number.isRequired,
@@ -16,31 +15,19 @@ const propTypes = {
 
 export default function CollectionsRowItem({ id, type, name, imageUrl }) {
 
-    const [renderRedirect, setRenderRedirect] = useState(false);
-
-    if (renderRedirect) {
-        return <Redirect to={`/${type}/${id}`} />
-    }
-
     return (
-        <div
-            className="card"
-            style={{ cursor: 'pointer' }}
-            onClick={() => setRenderRedirect(true)}
-        >
-            <div className="card-image">
-                <BImage
-                    source={imageUrl.backdrop || imageUrl.poster}
-                    altText={`for ${name}`}
-                    dimension='16by9' />
-            </div>
+        <MediaCard>
+            <Link to={`/media/${type}/${id}`}>
+                <CardImage
+                    src={imageUrl.backdrop || imageUrl.poster}
+                    alt={`for ${name}`}
+                />
 
-            <div className="card-content p-3">
-                <div className="content">
-                    <p> {name} </p>
-                </div>
-            </div>
-        </div>
+                <CardContent>
+                    <p>{name}</p>
+                </CardContent>
+            </Link>
+        </MediaCard>
     );
 
 };

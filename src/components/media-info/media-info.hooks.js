@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
 
-import { TmdbApi } from '@api/tmdb';
+import { TmdbApi } from '../../api/tmdb';
 
-async function _fetchMediaInfo(content, setMediaInfo) {
-    setMediaInfo(await TmdbApi.fetchMediaInfo(content));
+async function _fetchMediaInfo(mediaType, id, setMediaInfo) {
+    setMediaInfo(await TmdbApi.fetchMediaInfo({ type: mediaType, id}));
 }
 
-export function useMediaInfo(content) {
-    const [mediaInfo, setMediaInfo] = useState(content);
+export function useMediaInfo(mediaType, id) {
+    const [mediaInfo, setMediaInfo] = useState({
+        type: mediaType,
+        id
+    });
 
     useEffect(() => {
-        _fetchMediaInfo(content, setMediaInfo);
-    }, [content]);
+        _fetchMediaInfo(mediaType, id, setMediaInfo);
+    }, [mediaType, id]);
 
     return mediaInfo;
 }
